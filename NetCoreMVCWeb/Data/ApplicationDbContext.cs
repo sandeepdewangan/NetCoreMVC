@@ -15,9 +15,9 @@ namespace NetCoreMVCWeb.Data
         {
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id=1, Name="Horror"},
-                new Category { Id=2, Name="Sci-Fi"},
-                new Category { Id=3, Name="Comedy"}
+                new Category { Id=1, Name="Horror", DisplayOrder=2},
+                new Category { Id=2, Name="Sci-Fi", DisplayOrder=1},
+                new Category { Id=3, Name="Comedy", DisplayOrder=3}
                 );
         }
     }
