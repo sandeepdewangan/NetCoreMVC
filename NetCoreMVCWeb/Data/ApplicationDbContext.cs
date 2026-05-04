@@ -9,5 +9,16 @@ namespace NetCoreMVCWeb.Data
         {
         }
         public DbSet<Category> Categories { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id=1, Name="Horror"},
+                new Category { Id=2, Name="Sci-Fi"},
+                new Category { Id=3, Name="Comedy"}
+                );
+        }
     }
 }
