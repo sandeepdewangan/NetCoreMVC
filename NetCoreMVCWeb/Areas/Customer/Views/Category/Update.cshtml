@@ -1,20 +1,23 @@
-﻿@model Category
+﻿@using NetCore.Models
+@model Category
 
 <div class="container mt-5">
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Add Category</h4>
+            <h4 class="mb-0">Update Category</h4>
         </div>
         <div class="card-body">
-            <form method="post">
-                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form method="post" asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Category Id (Hidden) -->
+                <input asp-for="Id" hidden />
 
                 <!-- Category Name -->
                 <div class="mb-3">
                     <label for="categoryName" class="form-label">Category Name</label>
                     <input type="text" class="form-control" asp-for="Name" placeholder="Enter category name" required>
                     <span asp-validation-for="Name" class="text-danger"></span>
-
                 </div>
 
                 <!-- Display Order -->
@@ -33,7 +36,7 @@
     </div>
 </div>
 
-@section Scripts{
+@section Scripts {
     <script>
         <partial name="_ValidationScriptsPartial" />
     </script>

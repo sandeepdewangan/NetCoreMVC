@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace NetCoreMVCWeb.Models
+namespace NetCore.Models
 {
     public class Category
     {

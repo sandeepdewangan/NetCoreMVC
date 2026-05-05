@@ -3,16 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NetCoreMVCWeb.Data;
+using NetCore.DataAccess;
+using NetCore.DataAccess.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace NetCoreMVCWeb.Migrations
+namespace NetCore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260504091038_AddCategoryToTb")]
-    partial class AddCategoryToTb
+    [Migration("20260504092147_SeedCategoryTable")]
+    partial class SeedCategoryTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,6 +40,23 @@ namespace NetCoreMVCWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sci-Fi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Comedy"
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetCoreMVCWeb.Models;
+using NetCore.Models;
 
-namespace NetCoreMVCWeb.Data
+namespace NetCore.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace NetCoreMVCWeb.Migrations
+namespace NetCore.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryToTb : Migration

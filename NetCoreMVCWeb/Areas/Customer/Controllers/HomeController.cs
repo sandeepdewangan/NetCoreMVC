@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using NetCoreMVCWeb.Models;
 
-namespace NetCoreMVCWeb.Controllers
+namespace NetCoreMVCWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         public IActionResult Index()

@@ -27,8 +27,8 @@ Notes:
 
 1. Up: What changes are going to be applied.
 2. Down: If something is wrong in Up, do this.
-
-
+   
+   
 
 ### Features
 
@@ -39,5 +39,50 @@ Notes:
 * Useful for short-lived messages (e.g., alerts, notifications).
 
 * Data persists only until it is read.
+  
+  
+
+### Multiple Tier App
+
+From new project -> add class library.
+
+We can separate the projects using class library.
+
+eg. Models, DataAccess etc.
+
+
+
+### Areas
+
+In ASP.NET Core, **Areas** are a way to organize large applications into smaller, modular sections. Think of them as mini-MVC apps inside your main app.
+
+Without Area
+
+```
+Controllers/
+    HomeController.cs
+    AdminController.cs
+    ProductController.cs
+Views/
+    Home/
+    Admin/
+    Product/
+```
+
+With Area
+
+```
+Areas/
+    Admin/
+        Controllers/
+            DashboardController.cs
+        Views/
+            Dashboard/
+    Customer/
+        Controllers/
+            HomeController.cs
+        Views/
+            Home/
+```
 
 

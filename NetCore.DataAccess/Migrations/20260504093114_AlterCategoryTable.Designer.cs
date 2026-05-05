@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NetCoreMVCWeb.Data;
+using NetCore.DataAccess.Data;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace NetCoreMVCWeb.Migrations
+namespace NetCore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260504092147_SeedCategoryTable")]
-    partial class SeedCategoryTable
+    [Migration("20260504093114_AlterCategoryTable")]
+    partial class AlterCategoryTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace NetCoreMVCWeb.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -44,16 +47,19 @@ namespace NetCoreMVCWeb.Migrations
                         new
                         {
                             Id = 1,
+                            DisplayOrder = 2,
                             Name = "Horror"
                         },
                         new
                         {
                             Id = 2,
+                            DisplayOrder = 1,
                             Name = "Sci-Fi"
                         },
                         new
                         {
                             Id = 3,
+                            DisplayOrder = 3,
                             Name = "Comedy"
                         });
                 });

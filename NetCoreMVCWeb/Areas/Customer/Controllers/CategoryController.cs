@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NetCoreMVCWeb.Data;
-using NetCoreMVCWeb.Models;
+using Microsoft.EntityFrameworkCore;
+using NetCore.DataAccess.Data;
+using NetCore.Models;
 
-namespace NetCoreMVCWeb.Controllers
+namespace NetCoreMVCWeb.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -11,9 +13,9 @@ namespace NetCoreMVCWeb.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var categories = _context.Categories.ToList();
+            var categories = await _context.Categories.ToListAsync();
             return View("Index", categories);
         }
 
@@ -25,18 +27,18 @@ namespace NetCoreMVCWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Category category)
+        public async Task<IActionResult> Create(Category category)
         {
             // Custom Error, if category exists
-            if (_context.Categories.Any(c => c.Name.ToLower() == category.Name.ToLower()))
+            if (await _context.Categories.AnyAsync(c => c.Name.ToLower() == category.Name.ToLower()))
             {
                 ModelState.AddModelError("Name", "Category name already exits!");
             }
 
             if (ModelState.IsValid)
             {
-                _context.Categories.Add(category);
-                _context.SaveChanges();
+                await _context.Categories.AddAsync(category);
+                await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Category created successfully!";
                 return RedirectToAction("Index");
             }
@@ -45,13 +47,13 @@ namespace NetCoreMVCWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var category = _context.Categories.Find(id);
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -61,12 +63,12 @@ namespace NetCoreMVCWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Category category)
+        public async Task<IActionResult> Update(Category category)
         {
             if (ModelState.IsValid)
             {
                 _context.Categories.Update(category);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 TempData["SuccessMessage"] = "Category udated successfully!";
                 return RedirectToAction("Index");
             }
@@ -75,13 +77,13 @@ namespace NetCoreMVCWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var category = _context.Categories.Find(id);
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -91,16 +93,16 @@ namespace NetCoreMVCWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var category = _context.Categories.Find(id);
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
             }
 
             _context.Categories.Remove(category);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             TempData["SuccessMessage"] = "Category deleted successfully!";
             return RedirectToAction("Index");
         }

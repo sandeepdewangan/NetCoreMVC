@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="NetCore.Business/NetCore.Business.csproj" Id="6d1ca24a-c148-432b-ad2f-7e1b1519c5b4" />
+  <Project Path="NetCore.DataAccess/NetCore.DataAccess.csproj" Id="670f7b37-ecf2-480b-ab61-d4233754705b" />
+  <Project Path="NetCore.Models/NetCore.Models.csproj" Id="39cf87b5-9e00-4a76-b319-f4d1e0c85194" />
+  <Project Path="NetCore.Utility/NetCore.Utility.csproj" Id="1950eafa-7592-4aa2-bd51-f01f234e4d19" />
   <Project Path="NetCoreMVCWeb/NetCoreMVCWeb.csproj" />
 </Solution>
