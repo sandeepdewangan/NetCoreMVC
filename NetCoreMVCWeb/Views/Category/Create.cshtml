@@ -1,0 +1,40 @@
+﻿@model Category
+
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Add Category</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Category Name -->
+                <div class="mb-3">
+                    <label for="categoryName" class="form-label">Category Name</label>
+                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter category name" required>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
+                </div>
+
+                <!-- Display Order -->
+                <div class="mb-3">
+                    <label asp-for="DisplayOrder" class="form-label">Display Order</label>
+                    <input type="number" class="form-control" asp-for="DisplayOrder" placeholder="Enter display order" required>
+                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        <partial name="_ValidationScriptsPartial" />
+    </script>
+}

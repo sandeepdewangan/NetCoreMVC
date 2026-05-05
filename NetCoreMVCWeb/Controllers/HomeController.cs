@@ -16,6 +16,5 @@ namespace NetCoreMVCWeb.Controllers
             return View();
         }
 
-
     }
 }

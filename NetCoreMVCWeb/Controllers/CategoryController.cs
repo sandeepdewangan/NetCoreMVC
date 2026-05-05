@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NetCoreMVCWeb.Data;
+using NetCoreMVCWeb.Models;
 
 namespace NetCoreMVCWeb.Controllers
 {
@@ -14,6 +15,32 @@ namespace NetCoreMVCWeb.Controllers
         {
             var categories = _context.Categories.ToList();
             return View("Index", categories);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category category)
+        {
+            // Custom Error, if category exists
+            if (_context.Categories.Any(c => c.Name.ToLower() == category.Name.ToLower()))
+            {
+                ModelState.AddModelError("Name", "Category name already exits!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

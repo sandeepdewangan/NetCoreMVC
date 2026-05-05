@@ -7,7 +7,12 @@ namespace NetCoreMVCWeb.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(25)]
         public required string Name { get; set; }
-        public int DisplayOrder { get; set; }
+
+        [Range(0,100, ErrorMessage ="Range must be between 0 and 100!")]
+        public int? DisplayOrder { get; set; }
     }
 }
