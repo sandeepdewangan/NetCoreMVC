@@ -85,4 +85,23 @@ Areas/
             Home/
 ```
 
+### Framework Reference
+
+The Models class library needs reference of something which is a bundle of assemblies included with the .NET runtime. We can referece it as below under project setting.
+
+```
+<ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+</ItemGroup>
+```
+
+
+
+| Feature    | FrameworkReference        | PackageReference |
+| ---------- | ------------------------- | ---------------- |
+| Source     | Runtime (shared)          | NuGet            |
+| Versioning | Tied to installed runtime | Explicit version |
+| Deployment | Not bundled               | Bundled          |
+| Size       | Smaller                   | Larger           |
+
 
