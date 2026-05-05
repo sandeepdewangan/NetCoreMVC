@@ -42,5 +42,34 @@ namespace NetCoreMVCWeb.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var category = _context.Categories.Find(id);
+            if(category == null)    
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Categories.Update(category);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
     }
 }
