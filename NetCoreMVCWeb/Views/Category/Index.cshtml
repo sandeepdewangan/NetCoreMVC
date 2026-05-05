@@ -1,12 +1,6 @@
 ﻿@model List<Category>
 
-@if (TempData["SuccessMessage"] != null)
-{
-    <div id="autoAlert" class="alert alert-success alert-dismissible fade show" role="alert">
-        @TempData["SuccessMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-}
+<partial name="_Notification" />
 
 <h1>Category List</h1>
 <br />
