@@ -30,4 +30,14 @@ Notes:
 
 
 
+### Features
+
+### TempData
+
+* `TempData` is a dictionary object that stores data temporarily. 
+
+* Useful for short-lived messages (e.g., alerts, notifications).
+
+* Data persists only until it is read.
+
 

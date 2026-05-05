@@ -37,6 +37,7 @@ namespace NetCoreMVCWeb.Controllers
             {
                 _context.Categories.Add(category);
                 _context.SaveChanges();
+                TempData["SuccessMessage"] = "Category created successfully!";
                 return RedirectToAction("Index");
             }
 
@@ -66,6 +67,7 @@ namespace NetCoreMVCWeb.Controllers
             {
                 _context.Categories.Update(category);
                 _context.SaveChanges();
+                TempData["SuccessMessage"] = "Category udated successfully!";
                 return RedirectToAction("Index");
             }
 
@@ -99,6 +101,7 @@ namespace NetCoreMVCWeb.Controllers
 
             _context.Categories.Remove(category);
             _context.SaveChanges();
+            TempData["SuccessMessage"] = "Category deleted successfully!";
             return RedirectToAction("Index");
         }
     }

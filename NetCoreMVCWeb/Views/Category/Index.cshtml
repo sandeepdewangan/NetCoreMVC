@@ -1,7 +1,15 @@
 ﻿@model List<Category>
 
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="autoAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
 <h1>Category List</h1>
-<br/>
+<br />
 <a asp-controller="Category" asp-action="Create" class="btn btn-outline-primary">Add Category</a>
 <br />
 <br />
@@ -28,6 +36,18 @@
                 </td>
             </tr>
         }
-        
+
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            var alert = document.getElementById('autoAlert');
+            if (alert) {
+                var bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }
+        }, 3000); // 3000 ms = 3 seconds
+    </script>
+}
